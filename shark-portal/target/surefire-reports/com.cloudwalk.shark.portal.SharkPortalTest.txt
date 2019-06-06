@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.cloudwalk.shark.portal.SharkPortalTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.613 s <<< FAILURE! - in com.cloudwalk.shark.portal.SharkPortalTest
-insert(com.cloudwalk.shark.portal.SharkPortalTest)  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: java.lang.IllegalStateException: Neither GenericXmlContextLoader nor AnnotationConfigContextLoader was able to load an ApplicationContext from [MergedContextConfiguration@37f1104d testClass = SharkPortalTest, locations = '{}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]].
-

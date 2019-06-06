@@ -1,6 +1,7 @@
 package com.cloudwalk.shark.mapper;
 
 import com.cloudwalk.shark.model.User;
+import com.cloudwalk.shark.multiDataSource.DataSourceKey;
 
 import java.util.List;
 import java.util.Map;

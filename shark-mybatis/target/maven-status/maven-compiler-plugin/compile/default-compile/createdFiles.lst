@@ -1,7 +1,0 @@
-com\cloudwalk\shark\model\User.class
-com\cloudwalk\shark\model\Role.class
-com\cloudwalk\shark\mapper\UserMapper.class
-com\cloudwalk\shark\dao\UserDao.class
-com\cloudwalk\shark\encrypt\EncryptMethod.class
-com\cloudwalk\shark\encrypt\EncryptFieldAop.class
-com\cloudwalk\shark\encrypt\EncryptField.class

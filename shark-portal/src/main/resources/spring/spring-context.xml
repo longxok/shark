@@ -51,9 +51,32 @@
           p:preferredTestQuery="SELECT 1"
           p:maxConnectionAge="3000"/>
 
+
+    <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driver}">
+        </property>
+        <property name="jdbcUrl" value="${url1}">
+        </property>
+        <property name="user" value="${username1}"></property>
+        <property name="password" value="${password1}"></property>
+    </bean>
+
+    <!-- 配置多数据源映射 -->
+    <bean id="multipleDataSource" class="com.cloudwalk.shark.multiDataSource.MultipleDataSource" >
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="dataSource" key="dataSource1"></entry>
+                <entry value-ref="dataSource2" key="dataSource2"></entry>
+            </map>
+        </property>
+        <!-- 默认数据源 -->
+        <property name="defaultTargetDataSource" ref="dataSource" >
+        </property>
+    </bean>
+
     <!-- mybatis文件配置，扫描所有mapper文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="multipleDataSource"/>
         <property name="configLocation" value="classpath:/spring/mybatis.xml"/>
 
        <property name="typeAliasesPackage" value="com.cloudwalk.shark.model"/>
@@ -87,7 +110,7 @@
     <!-- 声明式事务 -->
     <bean name="txmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 事务开启必须使用session -->
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="multipleDataSource"></property>
     </bean>
 
     <!-- 事务增强类
@@ -108,13 +131,17 @@
         </tx:attributes>
     </tx:advice>
 
+
+    <bean id="multipleDataSourceExchange" class="com.cloudwalk.shark.multiDataSource.MultipleDataSourceExchange "/>
+
+
     <!-- 使用AOP切面，开始把事务添加到切面中 -->
     <aop:config>
         <!-- 表达式：返回类型模式是*，它代表了匹配任意的返回类型
         应用到service下所有实现类的所有类的所有方法所有参数 -->
-        <aop:pointcut expression="execution(* com.cloudwalk.shark.service.impl.*.* (..))" id="mypoint"/>
-        <!-- 织入 把管理类[txmanager]生成的代理[txAdvice],织入到所定义的切面[mypoint]中 -->
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="mypoint"/>
+        <aop:pointcut expression="execution(* com.cloudwalk.shark.service.impl.*.* (..))" id="service"/>
+        <!-- 织入 把管理类[txmanager]生成的代理[txAdvice],织入到所定义的切面[service]中 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="service" order="2"/>
     </aop:config>
 
 </beans>
