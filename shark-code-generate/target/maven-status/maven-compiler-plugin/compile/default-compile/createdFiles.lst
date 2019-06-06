@@ -1,0 +1,11 @@
+admin\core\util\TableParseUtil.class
+admin\core\model\FieldInfo.class
+admin\Application.class
+admin\controller\IndexController.class
+admin\core\model\ClassInfo.class
+admin\model\ReturnT.class
+admin\core\exception\CodeGenerateException.class
+admin\util\FreemarkerUtil.class
+admin\core\util\StringUtils.class
+admin\core\CodeGeneratorTool.class
+admin\util\FreemarkerTool.class

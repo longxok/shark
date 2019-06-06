@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloudwalk.shark.mapper.UserMapper">
+    <resultMap id="userResult" type="com.cloudwalk.shark.model.User">
+        <id property="id" column="ID" jdbcType="INTEGER"></id>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
+        <result property="score" column="score" jdbcType="INTEGER"></result>
+    </resultMap>
+
+
+
+    <insert id="insertUser" parameterType="com.cloudwalk.shark.model.User">
+        INSERT INTO
+          t_shark_user(USER_NAME,SCORE)
+        VALUES
+        (
+          #{userName},#{score}
+        )
+    </insert>
+
+    <select id="findUserByName" parameterType="java.lang.String" resultMap="userResult">
+        select id,user_name,score from t_shark_user
+        where  1=1
+        <if test=" _parameter !=null and _parameter  !='' " >
+            and user_name = #{name,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <update id="updateUser" parameterType="com.cloudwalk.shark.model.User">
+        update t_shark_user t
+        <trim suffixOverrides="," prefix="set">
+            <if test="score!= null" >
+                t.score = #{score},
+            </if>
+        </trim>
+        where t.id =#{id}
+    </update>
+
+    <select id="queryUserByName" parameterType="java.util.ArrayList" resultMap="userResult">
+        select id,user_name as userName from t_shark_user
+        where  user_name in
+        <if test=" list !=null and list.size>0  !='' " >
+            <foreach collection="list" item="userName" index="index" open="(" close=")" separator=",">
+                #{userName}
+            </foreach>
+        </if>
+    </select>
+
+    <resultMap id="userResultCollection" type="com.cloudwalk.shark.model.User">
+        <id property="id" column="ID" jdbcType="INTEGER"></id>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
+        <collection property="roleList" select="selectRoles" column="{id=id,userName213=user_name}" ofType="com.cloudwalk.shark.model.Role" >
+        </collection>
+    </resultMap>
+
+    <select id="selectRoles" resultType="com.cloudwalk.shark.model.Role">
+        select role_name from t_shark_user t join  t_shark_role r
+        where  t.id = r.user_id
+    </select>
+
+
+    <select id="queryAllUser"  resultMap="userResultCollection">
+       SELECT	u.id,	user_name FROM	t_shark_user u JOIN t_shark_role r ON u.id = r.user_id GROUP BY	u.id,user_name
+    </select>
+
+
+    <resultMap id="usersResultCollection" type="com.cloudwalk.shark.model.User">
+        <id property="id" column="ID" jdbcType="INTEGER"></id>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
+        <collection property="roleList" select="selectUserRoles" column="{userName=user_name}" ofType="com.cloudwalk.shark.model.Role" >
+        </collection>
+    </resultMap>
+
+    <select id="selectUserRoles" resultType="com.cloudwalk.shark.model.Role">
+        select role_name from t_shark_user t join  t_shark_role r
+        where  t.id = r.user_id
+        and t.user_name=#{userName}
+    </select>
+
+
+    <select id="queryUsersByName"  parameterType="java.util.HashMap" resultMap="usersResultCollection">
+       SELECT	u.id,	user_name FROM	t_shark_user u JOIN t_shark_role r ON u.id = r.user_id
+        where u.user_name=#{userName}
+        GROUP BY	u.id,user_name
+    </select>
+
+   <!-- <resultMap id="userResultCollection" type="com.cloudwalk.shark.model.User">
+        <id property="id" column="ID" jdbcType="INTEGER"></id>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
+        <collection property="roleList" column="sdfasd" ofType="com.cloudwalk.shark.model.Role" >
+            <result property="roleName" column="role_name" jdbcType="VARCHAR"></result>
+        </collection>
+    </resultMap>
+
+
+    <select id="queryAllUser"  resultMap="userResultCollection">
+       SELECT	u.id,	user_name,role_name FROM	t_shark_user u JOIN t_shark_role r ON u.id = r.user_id
+    </select>-->
+
+</mapper>

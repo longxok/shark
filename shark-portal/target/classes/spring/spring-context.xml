@@ -1,0 +1,120 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+    <!-- 配置组件扫描器，使用注解方式开发,不用配置dao和service -->
+    <!-- 在springmvc.xml文件中也可以配置这个属性 -->
+    <context:component-scan base-package="com.*"/>
+
+<!--
+    <context:property-placeholder location="classpath:ap.properties"/>
+-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+   <!-- <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>*Service</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>commonMethodInterceptor</value>
+            </list>
+        </property>
+    </bean>-->
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
+          p:driverClass="${driver}"
+          p:jdbcUrl="${url}"
+          p:user="${username1}"
+          p:password="${password1}"
+          p:idleConnectionTestPeriod="${idleConnectionTestPeriod}"
+          p:maxIdleTime="${maxIdleTime}"
+          p:acquireIncrement="${acquireIncrement}"
+          p:initialPoolSize="${initialPoolSize}"
+          p:maxPoolSize="${maxPoolSize}"
+          p:minPoolSize="${minPoolSize}"
+          p:autoCommitOnClose="${autoCommitOnClose}"
+          p:checkoutTimeout="${checkoutTimeout}"
+          p:acquireRetryAttempts="${acquireRetryAttempts}"
+          p:preferredTestQuery="SELECT 1"
+          p:maxConnectionAge="3000"/>
+
+    <!-- mybatis文件配置，扫描所有mapper文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:/spring/mybatis.xml"/>
+
+       <property name="typeAliasesPackage" value="com.cloudwalk.shark.model"/>
+
+       <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            dialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 配置SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <!-- spring与mybatis整合配置，扫描所有dao,指定的映射器类是接口,接口方法可以用注解来指定 SQL 语句,但是 MyBatis 的映射器 XML 文件也可以用。 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+          p:basePackage="com.cloudwalk.shark.mapper"
+          p:sqlSessionFactoryBeanName="sqlSessionFactory"
+          p:sqlSessionTemplateBeanName="sqlSessionTemplate"/>
+
+    <!-- 声明式事务 -->
+    <bean name="txmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 事务开启必须使用session -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 事务增强类
+        transaction-manager：这种机制要放到上面哪一个bean中，
+        transaction-manager如果不写有一个默认值transactionManager，此时必须保证声明式事务中的bean的名字是transactionManager
+    -->
+    <tx:advice id="txAdvice" transaction-manager="txmanager">
+        <tx:attributes>
+            <!-- REQUIRED: 第一种事务声明方式，需要事务
+                SUPPORTS：第四种声明方式，不需要事务-->
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="get*" propagation="SUPPORTS"/>
+            <tx:method name="find*" propagation="SUPPORTS"/>
+            <!-- 匹配以上之外的所有方法，类似于switch的default -->
+            <tx:method name="*" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 使用AOP切面，开始把事务添加到切面中 -->
+    <aop:config>
+        <!-- 表达式：返回类型模式是*，它代表了匹配任意的返回类型
+        应用到service下所有实现类的所有类的所有方法所有参数 -->
+        <aop:pointcut expression="execution(* com.cloudwalk.shark.service.impl.*.* (..))" id="mypoint"/>
+        <!-- 织入 把管理类[txmanager]生成的代理[txAdvice],织入到所定义的切面[mypoint]中 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="mypoint"/>
+    </aop:config>
+
+</beans>
