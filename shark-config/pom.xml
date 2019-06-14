@@ -92,5 +92,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-spring-context</artifactId>
+            <version>0.2.3-RC1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

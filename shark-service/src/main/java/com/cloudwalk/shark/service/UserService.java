@@ -13,7 +13,8 @@ public interface UserService {
     public void updateUser(User user);
 
     public User findUserByName(String name);
-    @DataSourceKey("dataSource2")
+
+    @DataSourceKey("dataSource")
     public List<User> queryUserByName(List<String> userNameList);
 
     public List<User> queryAllUser();
