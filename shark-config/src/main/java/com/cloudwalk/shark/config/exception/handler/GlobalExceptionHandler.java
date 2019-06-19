@@ -2,6 +2,7 @@ package com.cloudwalk.shark.config.exception.handler;
 
 import com.cloudwalk.shark.common.em.GlobalCodeEnum;
 import com.cloudwalk.shark.common.utils.ResponseData;
+import com.cloudwalk.shark.config.exception.SharkException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -62,6 +63,14 @@ public class GlobalExceptionHandler {
         return response;
     }
 
+    @ExceptionHandler(SharkException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseData<String> handleSharkException(SharkException exception) {
+        ResponseData<String> response = new ResponseData<>();
+        response.setMessage("其他错误:"+exception.getMessage());
+        response.setCode(GlobalCodeEnum.FAIL.getErrorCode());
+        return response;
+    }
 
 
     @ExceptionHandler(Exception.class)

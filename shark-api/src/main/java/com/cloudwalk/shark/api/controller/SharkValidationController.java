@@ -39,4 +39,9 @@ public class SharkValidationController {
         return new ResponseData(true,"2","3",advertQueryForm);
     }
 
+    @GetMapping(value = "/enum")
+    @ResponseBody
+    public ResponseData validate(AdvertQueryForm request) {
+        return new ResponseData(true,"2","3",request);
+    }
 }

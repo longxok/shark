@@ -1,6 +1,9 @@
 package com.cloudwalk.shark.api.dto.validate;
 
 
+import com.cloudwalk.shark.common.em.SexEnums;
+import com.cloudwalk.shark.config.annotation.EnumValidator;
+
 import java.util.Date;
 
 public class AdvertQueryForm {
@@ -13,6 +16,8 @@ public class AdvertQueryForm {
     private String id;
 
     private Date startDate;
+    @EnumValidator(value = SexEnums.class)
+    private Integer sex;
 
     public String getMerchantName() {
         return merchantName;
@@ -52,5 +57,13 @@ public class AdvertQueryForm {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 }

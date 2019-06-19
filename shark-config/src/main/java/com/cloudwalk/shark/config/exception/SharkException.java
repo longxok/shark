@@ -15,32 +15,46 @@
  */
 package com.cloudwalk.shark.config.exception;
 
+import com.cloudwalk.shark.common.constant.BusinessCode;
+
 /**
  * Nacos Exception
  *
  * @author Nacos
  */
-public class SharkException extends Exception {
+public class SharkException extends RuntimeException {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = -3913902031489277776L;
 
-    private int errCode;
+    private String errCode;
 
     private String errMsg;
 
     public SharkException() {
     }
 
-    public SharkException(int errCode, String errMsg) {
+    public SharkException(String errCode, String errMsg) {
         super(errMsg);
         this.errCode = errCode;
         this.errMsg = errMsg;
     }
 
-    public int getErrCode() {
+    public SharkException(BusinessCode businessCode) {
+        super(businessCode.getMsg());
+        this.setErrCode(businessCode.getCode());
+        this.setErrMsg(businessCode.getMsg());
+    }
+
+    public SharkException(BusinessCode businessCode, String msg) {
+        super(msg);
+        this.setErrCode(businessCode.getCode());
+        this.setErrMsg(businessCode.getMsg());
+    }
+
+    public String getErrCode() {
         return errCode;
     }
 
@@ -48,7 +62,7 @@ public class SharkException extends Exception {
         return errMsg;
     }
 
-    public void setErrCode(int errCode) {
+    public void setErrCode(String errCode) {
         this.errCode = errCode;
     }
 
