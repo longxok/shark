@@ -1,8 +1,8 @@
 package com.cloudwalk.shark.service.impl;
 
-import com.cloudwalk.shark.dao.UserDao;
-import com.cloudwalk.shark.encrypt.EncryptMethod;
-import com.cloudwalk.shark.model.User;
+import com.cloudwalk.shark.multi.datasource.encrypt.annotation.EncryptMethod;
+import com.cloudwalk.shark.controller.dao.UserDao;
+import com.cloudwalk.shark.controller.model.User;
 import com.cloudwalk.shark.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

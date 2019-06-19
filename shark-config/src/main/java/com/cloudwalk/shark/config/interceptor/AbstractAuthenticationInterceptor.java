@@ -1,8 +1,7 @@
 package com.cloudwalk.shark.config.interceptor;
 
 import com.cloudwalk.shark.config.annotation.LoginRequired;
-import com.cloudwalk.shark.model.User;
-import com.cloudwalk.shark.service.UserService;
+import com.cloudwalk.shark.controller.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
@@ -13,7 +12,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -24,8 +22,6 @@ import java.lang.reflect.Method;
 public abstract class AbstractAuthenticationInterceptor extends HandlerInterceptorAdapter {
 
     public final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
-    @Resource
-    private UserService userService;
 
     @Autowired
     public RedissonClient redissonClient;

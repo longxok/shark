@@ -1,7 +1,7 @@
 package com.cloudwalk.shark.config.interceptor;
 
 import com.cloudwalk.shark.config.annotation.CurrentUser;
-import com.cloudwalk.shark.model.User;
+import com.cloudwalk.shark.controller.model.User;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

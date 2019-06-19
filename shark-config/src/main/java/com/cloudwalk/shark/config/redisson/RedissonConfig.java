@@ -1,6 +1,7 @@
 package com.cloudwalk.shark.config.redisson;
 
 import com.cloudwalk.shark.config.inter.impl.RedissonLocker;
+import com.cloudwalk.shark.config.utils.LockUtil;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;

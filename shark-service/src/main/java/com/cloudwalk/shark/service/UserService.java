@@ -1,7 +1,7 @@
 package com.cloudwalk.shark.service;
 
-import com.cloudwalk.shark.model.User;
-import com.cloudwalk.shark.multiDataSource.DataSourceKey;
+import com.cloudwalk.shark.multi.datasource.multiDataSource.annotation.DataSourceKey;
+import com.cloudwalk.shark.controller.model.User;
 
 import java.util.List;
 import java.util.Map;

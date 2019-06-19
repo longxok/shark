@@ -52,31 +52,34 @@
           p:maxConnectionAge="3000"/>
 
 
-    <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+   <!-- <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${driver}">
         </property>
         <property name="jdbcUrl" value="${url1}">
         </property>
         <property name="user" value="${username1}"></property>
         <property name="password" value="${password1}"></property>
-    </bean>
+    </bean>-->
 
     <!-- 配置多数据源映射 -->
-    <bean id="multipleDataSource" class="com.cloudwalk.shark.multiDataSource.MultipleDataSource" >
+   <!-- <bean id="multipleDataSource" class="MultipleDataSource" >
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <entry value-ref="dataSource" key="dataSource1"></entry>
                 <entry value-ref="dataSource2" key="dataSource2"></entry>
             </map>
         </property>
-        <!-- 默认数据源 -->
+        &lt;!&ndash; 默认数据源 &ndash;&gt;
         <property name="defaultTargetDataSource" ref="dataSource" >
         </property>
-    </bean>
+    </bean>-->
 
     <!-- mybatis文件配置，扫描所有mapper文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--
         <property name="dataSource" ref="multipleDataSource"/>
+-->
+        <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:/spring/mybatis.xml"/>
 
        <property name="typeAliasesPackage" value="com.cloudwalk.shark.model"/>
@@ -103,14 +106,14 @@
 
     <!-- spring与mybatis整合配置，扫描所有dao,指定的映射器类是接口,接口方法可以用注解来指定 SQL 语句,但是 MyBatis 的映射器 XML 文件也可以用。 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-          p:basePackage="com.cloudwalk.shark.mapper"
+          p:basePackage="com.cloudwalk.shark.controller.mapper"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"
           p:sqlSessionTemplateBeanName="sqlSessionTemplate"/>
 
     <!-- 声明式事务 -->
     <bean name="txmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 事务开启必须使用session -->
-        <property name="dataSource" ref="multipleDataSource"></property>
+        <property name="dataSource" ref="dataSource"></property>
     </bean>
 
     <!-- 事务增强类
@@ -132,7 +135,7 @@
     </tx:advice>
 
 
-    <bean id="multipleDataSourceExchange" class="com.cloudwalk.shark.multiDataSource.MultipleDataSourceExchange "/>
+    <bean id="multipleDataSourceExchange" class="com.cloudwalk.shark.multi.datasource.multiDataSource.MultipleDataSourceExchange "/>
 
 
     <!-- 使用AOP切面，开始把事务添加到切面中 -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloudwalk.shark.mapper.UserMapper">
-    <resultMap id="userResult" type="com.cloudwalk.shark.model.User">
+<mapper namespace="com.cloudwalk.shark.controller.mapper.UserMapper">
+    <resultMap id="userResult" type="com.cloudwalk.shark.controller.model.User">
         <id property="id" column="ID" jdbcType="INTEGER"></id>
         <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
         <result property="score" column="score" jdbcType="INTEGER"></result>
@@ -9,7 +9,7 @@
 
 
 
-    <insert id="insertUser" parameterType="com.cloudwalk.shark.model.User">
+    <insert id="insertUser" parameterType="com.cloudwalk.shark.controller.model.User">
         INSERT INTO
           t_shark_user(id,USER_NAME,SCORE)
         VALUES
@@ -26,7 +26,7 @@
         </if>
     </select>
 
-    <update id="updateUser" parameterType="com.cloudwalk.shark.model.User">
+    <update id="updateUser" parameterType="com.cloudwalk.shark.controller.model.User">
         update t_shark_user t
         <trim suffixOverrides="," prefix="set">
             <if test="score!= null" >
@@ -46,14 +46,14 @@
         </if>
     </select>
 
-    <resultMap id="userResultCollection" type="com.cloudwalk.shark.model.User">
+    <resultMap id="userResultCollection" type="com.cloudwalk.shark.controller.model.User">
         <id property="id" column="ID" jdbcType="INTEGER"></id>
         <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
-        <collection property="roleList" select="selectRoles" column="{id=id,userName213=user_name}" ofType="com.cloudwalk.shark.model.Role" >
+        <collection property="roleList" select="selectRoles" column="{id=id,userName213=user_name}" ofType="com.cloudwalk.shark.controller.model.Role" >
         </collection>
     </resultMap>
 
-    <select id="selectRoles" resultType="com.cloudwalk.shark.model.Role">
+    <select id="selectRoles" resultType="com.cloudwalk.shark.controller.model.Role">
         select role_name from t_shark_user t join  t_shark_role r
         where  t.id = r.user_id
     </select>
@@ -64,14 +64,14 @@
     </select>
 
 
-    <resultMap id="usersResultCollection" type="com.cloudwalk.shark.model.User">
+    <resultMap id="usersResultCollection" type="com.cloudwalk.shark.controller.model.User">
         <id property="id" column="ID" jdbcType="INTEGER"></id>
         <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
-        <collection property="roleList" select="selectUserRoles" column="{userName=user_name}" ofType="com.cloudwalk.shark.model.Role" >
+        <collection property="roleList" select="selectUserRoles" column="{userName=user_name}" ofType="com.cloudwalk.shark.controller.model.Role" >
         </collection>
     </resultMap>
 
-    <select id="selectUserRoles" resultType="com.cloudwalk.shark.model.Role">
+    <select id="selectUserRoles" resultType="com.cloudwalk.shark.controller.model.Role">
         select role_name from t_shark_user t join  t_shark_role r
         where  t.id = r.user_id
         and t.user_name=#{userName}
@@ -84,10 +84,10 @@
         GROUP BY	u.id,user_name
     </select>
 
-   <!-- <resultMap id="userResultCollection" type="com.cloudwalk.shark.model.User">
+   <!-- <resultMap id="userResultCollection" type="User">
         <id property="id" column="ID" jdbcType="INTEGER"></id>
         <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
-        <collection property="roleList" column="sdfasd" ofType="com.cloudwalk.shark.model.Role" >
+        <collection property="roleList" column="sdfasd" ofType="Role" >
             <result property="roleName" column="role_name" jdbcType="VARCHAR"></result>
         </collection>
     </resultMap>

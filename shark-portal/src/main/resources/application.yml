@@ -1,8 +1,6 @@
 spring:
   profiles:
     active: dev
-
-
 eureka:
   instance:
     hostname: localhost
@@ -13,7 +11,7 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 server:
   port: 8083 #服务端口
-
 ribbon:
   eureka:
     enabled: true
+

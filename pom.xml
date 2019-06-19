@@ -20,6 +20,7 @@
         <module>shark-eureka-provider</module>
         <module>shark-interview</module>
         <module>shark-cloud-zuul</module>
+        <module>shark-multi-datasource</module>
     </modules>
 
    <dependencyManagement>
@@ -124,7 +125,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- DAO框架：mybatis-->
+        <!-- DAO框架：controller-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

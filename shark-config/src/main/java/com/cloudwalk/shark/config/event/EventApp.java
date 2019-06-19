@@ -2,12 +2,10 @@ package com.cloudwalk.shark.config.event;
 
 import com.cloudwalk.shark.config.event.custom.MyEventService;
 import com.cloudwalk.shark.config.event.generics.EntiryWrapperEventService;
-import com.cloudwalk.shark.config.event.standard.ContextStartedListener;
 import com.cloudwalk.shark.config.event.standard.ContextStopListener;
 import com.cloudwalk.shark.config.event.standard.MultiEventListener;
+import com.cloudwalk.shark.config.event.standard.ContextStartedListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.*;
 
@@ -20,7 +18,7 @@ public class EventApp/* implements ApplicationListener */{
 	private MyEventService myEventService;
 
 	@Bean
-	ContextStopListener contextStopListener() {
+    ContextStopListener contextStopListener() {
 		return new ContextStopListener();
 	}
 	
@@ -30,7 +28,7 @@ public class EventApp/* implements ApplicationListener */{
 	}
 	
 	@Bean
-	MultiEventListener multiEventListener() {
+    MultiEventListener multiEventListener() {
 		return new MultiEventListener();
 	}
 	
