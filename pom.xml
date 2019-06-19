@@ -125,7 +125,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- DAO框架：controller-->
+        <!-- DAO框架：api-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

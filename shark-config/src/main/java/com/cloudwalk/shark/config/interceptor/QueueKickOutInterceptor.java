@@ -1,6 +1,6 @@
 package com.cloudwalk.shark.config.interceptor;
 
-import com.cloudwalk.shark.controller.model.User;
+import com.cloudwalk.shark.api.model.User;
 import org.redisson.api.RBucket;
 import org.redisson.api.RDeque;
 import org.redisson.api.RLock;
