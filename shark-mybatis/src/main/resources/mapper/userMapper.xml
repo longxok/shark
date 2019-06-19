@@ -11,10 +11,10 @@
 
     <insert id="insertUser" parameterType="com.cloudwalk.shark.model.User">
         INSERT INTO
-          t_shark_user(USER_NAME,SCORE)
+          t_shark_user(id,USER_NAME,SCORE)
         VALUES
         (
-          #{userName},#{score}
+          #{id},#{userName},#{score}
         )
     </insert>
 

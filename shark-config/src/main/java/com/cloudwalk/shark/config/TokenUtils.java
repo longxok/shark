@@ -1,5 +1,9 @@
 package com.cloudwalk.shark.config;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -9,8 +13,15 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TokenUtils {
+
+    /**
+     * 过期时间，单位毫秒
+     */
+    public static final long EXPIRE_TIME_MS = 604800 * 1000;
 
     /**
      * 签名秘钥
@@ -51,12 +62,15 @@ public class TokenUtils {
         // 通过秘钥签名JWT
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SECRET);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
-
+        Map<String,Object> claimsMap = new HashMap();
+        claimsMap.put("userName",id);
+        claimsMap.put("createTime",nowMillis);
         // Let's set the JWT Claims
         JwtBuilder builder = Jwts.builder().setId(id)
                 .setIssuedAt(now)
                 .setSubject(subject)
                 .setIssuer(issuer)
+                .addClaims(claimsMap)
                 .signWith(signatureAlgorithm, signingKey);
 
         // if it has been specified, let's add the expiration
@@ -80,6 +94,28 @@ public class TokenUtils {
         return claims;
     }
 
+    /**
+     * 获得token中的信息无需secret解密也能获得
+     *
+     * @return token中包含的用户名
+     */
+    public static String getUsername(String token) {
+        try {
+            DecodedJWT jwt = JWT.decode(token);
+            return jwt.getClaim("userName").asString();
+        } catch (JWTDecodeException e) {
+            return null;
+        }
+    }
+
+    public static Claim getClaim(String token, String key) {
+        try {
+            DecodedJWT jwt = JWT.decode(token);
+            return jwt.getClaim(key);
+        } catch (JWTDecodeException e) {
+            return null;
+        }
+    }
     public static void main(String[] args) {
         System.out.println(TokenUtils.createJwtToken("11111"));
     }

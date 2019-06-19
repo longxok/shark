@@ -12,6 +12,8 @@ public class User implements Serializable {
     @EncryptField
     private String score;
 
+    private boolean kickout;
+
     private List<Role> roleList;
     public int getId() {
         return id;
@@ -44,4 +46,12 @@ public class User implements Serializable {
     public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
+    public boolean isKickout() {
+        return kickout;
+    }
+
+    public void setKickout(boolean kickout) {
+        this.kickout = kickout;
+    }
+
 }
