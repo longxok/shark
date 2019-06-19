@@ -1,8 +1,13 @@
 package com.cloudwalk.shark.common.em;
 
 public enum GlobalCodeEnum {
-
+    /**
+     *
+     */
     SUCCESS("","000000","success"),
+    /**
+     *
+     */
     FAIL("","999999","success");
 
     private String moduleName;

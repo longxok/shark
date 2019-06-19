@@ -16,10 +16,6 @@
  */
 package com.cloudwalk.shark.config.event;
 
-import com.alibaba.nacos.api.config.ConfigService;
-import com.alibaba.nacos.api.config.convert.NacosConfigConverter;
-import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.spring.context.event.config.TimeoutNacosConfigListener;
 import com.alibaba.nacos.spring.util.NacosUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,9 +24,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

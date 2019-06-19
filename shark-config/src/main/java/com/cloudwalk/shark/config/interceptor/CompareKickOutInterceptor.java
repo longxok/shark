@@ -1,7 +1,6 @@
-package com.cloudwalk.shark.config.jwt;
+package com.cloudwalk.shark.config.interceptor;
 
 import com.cloudwalk.shark.config.TokenUtils;
-import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
 

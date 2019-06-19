@@ -1,10 +1,9 @@
-package com.cloudwalk.shark.config.jwt;
+package com.cloudwalk.shark.config.interceptor;
 
 import com.cloudwalk.shark.model.User;
 import org.redisson.api.RBucket;
 import org.redisson.api.RDeque;
 import org.redisson.api.RLock;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;

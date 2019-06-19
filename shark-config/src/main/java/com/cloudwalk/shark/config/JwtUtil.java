@@ -69,14 +69,14 @@ public class JwtUtil {
     /**
      * 构建JWT
      *
-     * @param alg      jwt 加密算法
-     * @param key      jwt 加密密钥
-     * @param sub      jwt 面向的用户
-     * @param aud      jwt 接收方
-     * @param jti      jwt 唯一身份标识
-     * @param iss      jwt 签发者
-     * @param nbf      jwt 生效日期时间
-     * @param duration jwt 有效时间，单位：秒
+     * @param alg      interceptor 加密算法
+     * @param key      interceptor 加密密钥
+     * @param sub      interceptor 面向的用户
+     * @param aud      interceptor 接收方
+     * @param jti      interceptor 唯一身份标识
+     * @param iss      interceptor 签发者
+     * @param nbf      interceptor 生效日期时间
+     * @param duration interceptor 有效时间，单位：秒
      * @return JWT字符串
      */
     public static String buildJWT(SignatureAlgorithm alg, Key key, String sub, String aud, String jti, String iss, Date nbf, Integer duration) {
@@ -106,12 +106,12 @@ public class JwtUtil {
     /**
      * 构建JWT
      *
-     * @param sub      jwt 面向的用户
-     * @param aud      jwt 接收方
-     * @param jti      jwt 唯一身份标识
-     * @param iss      jwt 签发者
-     * @param nbf      jwt 生效日期时间
-     * @param duration jwt 有效时间，单位：秒
+     * @param sub      interceptor 面向的用户
+     * @param aud      interceptor 接收方
+     * @param jti      interceptor 唯一身份标识
+     * @param iss      interceptor 签发者
+     * @param nbf      interceptor 生效日期时间
+     * @param duration interceptor 有效时间，单位：秒
      * @return JWT字符串
      */
     public static String buildJWT(String sub, String aud, String jti, String iss, Date nbf, Integer duration) {
@@ -121,8 +121,8 @@ public class JwtUtil {
     /**
      * 构建JWT
      *
-     * @param sub jwt 面向的用户
-     * @param jti jwt 唯一身份标识，主要用来作为一次性token,从而回避重放攻击
+     * @param sub interceptor 面向的用户
+     * @param jti interceptor 唯一身份标识，主要用来作为一次性token,从而回避重放攻击
      * @return JWT字符串
      */
     public static String buildJWT(String sub, String jti, Integer duration) {
@@ -134,7 +134,7 @@ public class JwtUtil {
      * <p>使用 UUID 作为 jti 唯一身份标识</p>
      * <p>JWT有效时间 600 秒，即 10 分钟</p>
      *
-     * @param sub jwt 面向的用户
+     * @param sub interceptor 面向的用户
      * @return JWT字符串
      */
     public static String buildJWT(String sub) {
@@ -144,8 +144,8 @@ public class JwtUtil {
     /**
      * 解析JWT
      *
-     * @param key       jwt 加密密钥
-     * @param claimsJws jwt 内容文本
+     * @param key       interceptor 加密密钥
+     * @param claimsJws interceptor 内容文本
      * @return {@link Jws}
      * @throws Exception
      */
@@ -159,7 +159,7 @@ public class JwtUtil {
     /**
      * 校验JWT
      *
-     * @param claimsJws jwt 内容文本
+     * @param claimsJws interceptor 内容文本
      * @return ture or false
      */
     public static Boolean checkJWT(String claimsJws) {
@@ -177,9 +177,9 @@ public class JwtUtil {
     /**
      * 校验JWT
      *
-     * @param key       jwt 加密密钥
-     * @param claimsJws jwt 内容文本
-     * @param sub       jwt 面向的用户
+     * @param key       interceptor 加密密钥
+     * @param claimsJws interceptor 内容文本
+     * @param sub       interceptor 面向的用户
      * @return ture or false
      */
     public static Boolean checkJWT(Key key, String claimsJws, String sub) {
@@ -198,8 +198,8 @@ public class JwtUtil {
     /**
      * 校验JWT
      *
-     * @param claimsJws jwt 内容文本
-     * @param sub       jwt 面向的用户
+     * @param claimsJws interceptor 内容文本
+     * @param sub       interceptor 面向的用户
      * @return ture or false
      */
     public static Boolean checkJWT(String claimsJws, String sub) {

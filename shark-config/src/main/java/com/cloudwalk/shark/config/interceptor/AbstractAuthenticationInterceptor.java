@@ -1,22 +1,14 @@
-package com.cloudwalk.shark.config.jwt;
+package com.cloudwalk.shark.config.interceptor;
 
-import com.cloudwalk.shark.config.TokenUtils;
 import com.cloudwalk.shark.config.annotation.LoginRequired;
 import com.cloudwalk.shark.model.User;
 import com.cloudwalk.shark.service.UserService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.SignatureException;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
-import org.redisson.api.RDeque;
-import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -27,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.util.concurrent.TimeUnit;
-
 
 
 public abstract class AbstractAuthenticationInterceptor extends HandlerInterceptorAdapter {

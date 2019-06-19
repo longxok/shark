@@ -1,4 +1,4 @@
-package com.cloudwalk.shark.config.controllerException;
+package com.cloudwalk.shark.config.exception.handler;
 
 import com.cloudwalk.shark.common.em.GlobalCodeEnum;
 import com.cloudwalk.shark.common.utils.ResponseData;
