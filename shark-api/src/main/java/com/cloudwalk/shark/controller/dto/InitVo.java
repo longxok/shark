@@ -1,4 +1,4 @@
-package com.cloudwalk.shark.dto;
+package com.cloudwalk.shark.controller.dto;
 
 public class InitVo {
     public InitVo(){

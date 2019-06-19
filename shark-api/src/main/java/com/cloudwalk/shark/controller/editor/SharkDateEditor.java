@@ -1,4 +1,4 @@
-package com.cloudwalk.shark.editor;
+package com.cloudwalk.shark.controller.editor;
 
 import java.beans.PropertyEditorSupport;
 import java.text.DateFormat;

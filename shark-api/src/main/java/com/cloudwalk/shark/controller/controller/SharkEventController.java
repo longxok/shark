@@ -1,4 +1,4 @@
-package com.cloudwalk.shark.controller;
+package com.cloudwalk.shark.controller.controller;
 
 import com.cloudwalk.shark.config.event.custom.MyEventService;
 import org.springframework.beans.factory.annotation.Autowired;

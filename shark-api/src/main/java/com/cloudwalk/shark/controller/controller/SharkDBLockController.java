@@ -1,8 +1,8 @@
-package com.cloudwalk.shark.controller;
+package com.cloudwalk.shark.controller.controller;
 
 import com.cloudwalk.shark.config.profiler.Profiler;
-import com.cloudwalk.shark.config.redisson.LockUtil;
-import com.cloudwalk.shark.model.User;
+import com.cloudwalk.shark.config.utils.LockUtil;
+import com.cloudwalk.shark.controller.model.User;
 import com.cloudwalk.shark.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

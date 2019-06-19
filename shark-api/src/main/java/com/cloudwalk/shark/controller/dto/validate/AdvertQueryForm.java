@@ -1,4 +1,4 @@
-package com.cloudwalk.shark.dto.validate;
+package com.cloudwalk.shark.controller.dto.validate;
 
 
 import java.util.Date;
