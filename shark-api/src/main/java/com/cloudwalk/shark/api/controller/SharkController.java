@@ -1,11 +1,11 @@
 package com.cloudwalk.shark.api.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cloudwalk.shark.config.utils.TokenUtils;
-import com.cloudwalk.shark.api.dto.InitVo;
 import com.cloudwalk.shark.api.dto.UserDto;
 import com.cloudwalk.shark.api.dto.UserFathderDto;
-import com.cloudwalk.shark.api.model.User;
+import com.cloudwalk.shark.config.utils.TokenUtils;
+import com.cloudwalk.shark.api.dto.InitVo;
+import com.cloudwalk.shark.mybatis.model.User;
 import com.cloudwalk.shark.service.SharkServiceInter;
 import com.cloudwalk.shark.service.UserService;
 import io.swagger.annotations.Api;

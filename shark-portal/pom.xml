@@ -88,7 +88,7 @@
         </dependency>
         <dependency>
             <groupId>cn.cloudwalk</groupId>
-            <artifactId>shark-controller</artifactId>
+            <artifactId>shark-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
@@ -180,7 +180,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- DAO框架：api-->
+        <!-- DAO框架：mybatis-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

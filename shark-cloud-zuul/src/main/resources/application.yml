@@ -6,4 +6,4 @@ server:
   port: 8769
 spring:
   application:
-    name: api-gateway
+    name: mybatis-gateway

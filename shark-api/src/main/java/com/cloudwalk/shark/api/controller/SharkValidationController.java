@@ -1,7 +1,7 @@
 package com.cloudwalk.shark.api.controller;
 
-import com.cloudwalk.shark.common.utils.ResponseData;
 import com.cloudwalk.shark.api.dto.validate.AdvertQueryForm;
+import com.cloudwalk.shark.common.utils.ResponseData;
 import com.cloudwalk.shark.api.editor.SharkDateEditor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

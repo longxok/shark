@@ -8,9 +8,6 @@ import java.lang.annotation.*;
 
 /**
  * 枚举值校验注解
- *
- * @author: zetting
- * @date:2018/12/18
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

@@ -2,7 +2,7 @@ package com.cloudwalk.shark.api.controller;
 
 import com.cloudwalk.shark.config.profiler.Profiler;
 import com.cloudwalk.shark.config.utils.LockUtil;
-import com.cloudwalk.shark.api.model.User;
+import com.cloudwalk.shark.mybatis.model.User;
 import com.cloudwalk.shark.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

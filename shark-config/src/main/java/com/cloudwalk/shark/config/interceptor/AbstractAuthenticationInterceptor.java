@@ -1,7 +1,7 @@
 package com.cloudwalk.shark.config.interceptor;
 
 import com.cloudwalk.shark.config.annotation.LoginRequired;
-import com.cloudwalk.shark.api.model.User;
+import com.cloudwalk.shark.mybatis.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;

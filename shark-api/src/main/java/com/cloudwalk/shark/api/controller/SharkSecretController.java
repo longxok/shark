@@ -1,8 +1,8 @@
 package com.cloudwalk.shark.api.controller;
 
-import com.cloudwalk.shark.common.utils.ResponseData;
 import com.cloudwalk.shark.api.dto.UserDto;
-import com.cloudwalk.shark.api.model.User;
+import com.cloudwalk.shark.common.utils.ResponseData;
+import com.cloudwalk.shark.mybatis.model.User;
 import com.cloudwalk.shark.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

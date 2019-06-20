@@ -54,12 +54,12 @@ public class IndexController {
             // result
             Map<String, String> result = new HashMap<String, String>();
 
-            result.put("controller_code", freemarkerTool.processString("xxl-code-generator/api.ftl", params));
+            result.put("controller_code", freemarkerTool.processString("xxl-code-generator/mybatis.ftl", params));
             result.put("service_code", freemarkerTool.processString("xxl-code-generator/service.ftl", params));
             result.put("service_impl_code", freemarkerTool.processString("xxl-code-generator/service_impl.ftl", params));
 
             result.put("dao_code", freemarkerTool.processString("xxl-code-generator/dao.ftl", params));
-            result.put("mybatis_code", freemarkerTool.processString("xxl-code-generator/api.ftl", params));
+            result.put("mybatis_code", freemarkerTool.processString("xxl-code-generator/mybatis.ftl", params));
             result.put("model_code", freemarkerTool.processString("xxl-code-generator/model.ftl", params));
             result.put("param_code", freemarkerTool.processString("xxl-code-generator/param.ftl", params));
 

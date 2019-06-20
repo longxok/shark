@@ -5,7 +5,7 @@ import com.cloudwalk.shark.config.utils.TokenUtils;
 import com.cloudwalk.shark.config.annotation.CurrentUser;
 import com.cloudwalk.shark.config.annotation.LoginRequired;
 import com.cloudwalk.shark.api.dto.UserDto;
-import com.cloudwalk.shark.api.model.User;
+import com.cloudwalk.shark.mybatis.model.User;
 import com.cloudwalk.shark.service.UserService;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;

@@ -106,7 +106,7 @@
 
     <!-- spring与mybatis整合配置，扫描所有dao,指定的映射器类是接口,接口方法可以用注解来指定 SQL 语句,但是 MyBatis 的映射器 XML 文件也可以用。 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-          p:basePackage="com.cloudwalk.shark.api.mapper"
+          p:basePackage="com.cloudwalk.shark.mybatis.mapper"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"
           p:sqlSessionTemplateBeanName="sqlSessionTemplate"/>
 
@@ -146,5 +146,7 @@
         <!-- 织入 把管理类[txmanager]生成的代理[txAdvice],织入到所定义的切面[service]中 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="service" order="2"/>
     </aop:config>
+
+
 
 </beans>

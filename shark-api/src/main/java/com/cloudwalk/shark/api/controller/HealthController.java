@@ -32,6 +32,7 @@ public class HealthController {
 
     @NacosValue(value = "${nacos.test.propertie:123}", autoRefreshed = true)
     private String testProperties;
+    private String test;
 
     @ResponseBody
     @GetMapping("/nacos/test")
