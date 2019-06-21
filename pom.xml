@@ -21,6 +21,7 @@
         <module>shark-interview</module>
         <module>shark-cloud-zuul</module>
         <module>shark-multi-datasource</module>
+        <module>shark-common-poi</module>
     </modules>
 
    <dependencyManagement>
