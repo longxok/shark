@@ -58,9 +58,6 @@ public class MultipleDataSourceExchange implements Ordered {
             System.out.println(cls + ":" + e.getMessage());
         }
     }
-
-
-    @Override
     public int getOrder() {
         return 1;
     }

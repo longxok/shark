@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(SharkException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseData<String> handleSharkException(SharkException exception) {
-        ResponseData<String> response = new ResponseData<>();
+        ResponseData<String> response = new ResponseData<String>();
         response.setMessage("其他错误:"+exception.getMessage());
         response.setCode(GlobalCodeEnum.FAIL.getErrorCode());
         return response;
@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseData<String> handleDefaultException(Exception exception) {
 
-        ResponseData<String> response = new ResponseData<>();
+        ResponseData<String> response = new ResponseData<String>();
         response.setMessage("其他错误:"+exception.getMessage());
         response.setCode(GlobalCodeEnum.FAIL.getErrorCode());
         return response;

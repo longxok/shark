@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class RequestLimitContract {
     private static final Logger logger = LoggerFactory.getLogger("RequestLimitLogger");
-    private Map<String, Integer> redisTemplate=new ConcurrentHashMap<>();
+    private Map<String, Integer> redisTemplate=new ConcurrentHashMap<String, Integer>();
 
     final public AtomicInteger maxWaitInSecond = new AtomicInteger(0);
     ScheduledExecutorService scheduledExecutorService= Executors.newSingleThreadScheduledExecutor();

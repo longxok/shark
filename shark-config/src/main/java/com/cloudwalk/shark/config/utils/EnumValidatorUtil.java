@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 public class EnumValidatorUtil implements ConstraintValidator<EnumValidator, Object>, Annotation {
     private Logger log = LoggerFactory.getLogger(this.getClass());
-    private List<Object> values = new ArrayList<>();
+    private List<Object> values = new ArrayList<Object>();
 
     @Override
     public void initialize(EnumValidator enumValidator) {

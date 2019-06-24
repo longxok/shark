@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shark</artifactId>
+        <artifactId>shark-all</artifactId>
         <groupId>cn.cloudwalk</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../shark-all/pom.xml</relativePath>
     </parent>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -42,10 +42,10 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.4.2.Final</version>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>cn.cloudwalk</groupId>
             <artifactId>shark-service</artifactId>

@@ -2,26 +2,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <groupId>cn.cloudwalk</groupId>
     <artifactId>shark-config</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
+        <groupId>cn.cloudwalk</groupId>
+        <artifactId>shark-all</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../shark-all/pom.xml</relativePath>
+    </parent>
+    <!--<parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.2.RELEASE</version>
-        <relativePath/> <!-- 确认下spring boot的版本号在2.0以上-->
-    </parent>
+        <relativePath/> &lt;!&ndash; 确认下spring boot的版本号在2.0以上&ndash;&gt;
+    </parent>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
-
-
+      <!--  <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.0.2.RELEASE</version>
+        </dependency>-->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -35,8 +58,6 @@
         <dependency>
             <groupId>cn.cloudwalk</groupId>
             <artifactId>shark-mybatis</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope></scope>
         </dependency>
 
         <dependency>
@@ -77,7 +98,6 @@
         <dependency>
             <groupId>cn.cloudwalk</groupId>
             <artifactId>shark-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
@@ -132,5 +152,13 @@
             <version>1.1.1</version>
             <scope>compile</scope>
         </dependency>
+
+
+        <!--<dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+            <scope>compile</scope>
+        </dependency>-->
     </dependencies>
 </project>

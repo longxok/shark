@@ -1,6 +1,6 @@
 package retry;
 
-import com.cloudwalk.shark.api.interview.retryUtil.RetryUtil;
+import com.cloudwalk.shark.interview.retryUtil.RetryUtil;
 
 public class Test {
     public static void main(String[] args){

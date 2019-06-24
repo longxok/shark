@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Profiler {
 
-    private static final ThreadLocal<Entry> STACK = new ThreadLocal<>();
+    private static final ThreadLocal<Entry> STACK = new ThreadLocal<Entry>();
 
     private Profiler() {
     }
@@ -99,7 +99,7 @@ public class Profiler {
         Entry(Entry root, Entry parent, String context) {
             this.root = (root == null) ? this : root;
             this.parent = parent;
-            this.childs = new ArrayList<>();
+            this.childs = new ArrayList<Entry>();
             this.startTime = System.currentTimeMillis();
             this.context = context;
         }
