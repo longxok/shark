@@ -31,4 +31,16 @@ public class ZBeanFactory implements BeanPostProcessor {
         log.info("对象---" + beanName + "---初始化成功");
         return bean;
     }
+
+    /*private void doWithFields(final Object bean, final String beanName) {
+        ReflectionUtils.doWithFields(bean.getClass(), new ReflectionUtils.FieldCallback() {
+            @Override
+            public void doWith(Field field) throws IllegalArgumentException {
+                NacosValue annotation = getAnnotation(field, NacosValue.class);
+                doWithAnnotation(beanName, bean, annotation, field.getModifiers(), null, field);
+            }
+        });
+    }
+*/
+
 }

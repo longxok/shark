@@ -296,7 +296,7 @@ public abstract class AbstractWriteableHandler<T> implements WriteableHandler<T>
     }
 
     private void statisFormula(ExcelColumnInfo excelColumnInfo, Cell cell, Map<Integer, String> statisFormula, String separate) {
-        if (excelColumnInfo.isStatistics() && cell.getCellType() == CellType.NUMERIC.getCode() && !DateUtil.isCellDateFormatted(cell)) {
+        if (excelColumnInfo.isStatistics() && cell.getCellType().getCode() == CellType.NUMERIC.getCode() && !DateUtil.isCellDateFormatted(cell)) {
             int columnIndex = cell.getColumnIndex();
             String formula = statisFormula.get(columnIndex);
             String cellAddress = cell.getAddress().formatAsString();
