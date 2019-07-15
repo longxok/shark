@@ -5,9 +5,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <id column="USER_ID" jdbcType="DECIMAL" property="id" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
-    <result column="PASSWD" jdbcType="VARCHAR" property="passwd" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="passwd" />
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="STATUS" jdbcType="CHAR" property="status" />
   </resultMap>

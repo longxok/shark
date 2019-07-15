@@ -52,7 +52,7 @@ public class ApplicationTest {
 //		user.setId(4l);
 //		this.userService.delete(user);
 
-		PageHelper.startPage(2, 2);
+		PageHelper.startPage(2, 12);
 		List<User> list = userService.selectAll();
 		PageInfo<User> pageInfo = new PageInfo<User>(list);
 		List<User> result = pageInfo.getList();

@@ -8,13 +8,13 @@ import java.util.Date;
 @Table(name = "T_USER")
 public class User {
     @Id
-    @Column(name = "ID")
+    @Column(name = "USER_ID")
     private Long id;
 
     @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "PASSWD")
+    @Column(name = "PASSWORD")
     private String passwd;
 
     @Column(name = "CREATE_TIME")
