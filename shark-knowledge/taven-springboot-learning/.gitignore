@@ -1,0 +1,44 @@
+/spring-async-demo/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/spring-cloud-eureka/eureka-server/target
+/spring-cloud-eureka/service-hi/target
+/spring-dynamic-datasource/target
+/spring-cloud-eureka/service-ribbon/target
+/spring-atomikos/target
+/spring-boot-jwt/target
+/springboot-validate/target
+/springboot-redis/target
+/springboot-shiro/target
+/uni-number/target
+/springboot-mybatis/target
+/easyexcel-demo/target
+/insertBatch/target
+/downloadJar/target
+/repeat-submit-intercept/target
+/springboot-redisson/target
+/login-control/target
+/springboot-rabbitmq/target
+/springboot-quartz/target

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+</head>
+<body>
+你好, <span th:text="${principal}"></span><br>
+<p shiro:hasRole="super_admin">当前角色超级管理员</p>
+<button shiro:hasPermission="'sys:user:add'">添加</button>
+<button shiro:hasPermission="'sys:user:update'">编辑</button>
+<button shiro:hasPermission="'sys:user:lock'">冻结</button>
+<div shiro:hasAllPermissions="'sys:user:add, sys:user:update, sys:user:lock'">
+    <span>满足所有权限时显示</span>
+</div>
+<div shiro:hasAnyPermissions="'sys:user:add, sys:user:update, sys:user:lock'">
+    <span>满足一个权限即可显示</span>
+</div>
+</body>
+</html>
