@@ -13,35 +13,39 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date:2019/7/5
  */
 public class ThreadPoolTest {
-    private static int i=0;
+    private static int i = 0;
     private static Object object = new Object();
-    public static AtomicInteger  threadIndex = new AtomicInteger();
-    public static ThreadPoolExecutor executors = new ThreadPoolExecutor(3, 3, 10, TimeUnit.SECONDS,
-            new ArrayBlockingQueue<>(1), new ThreadFactory() {
+    public static AtomicInteger threadIndex = new AtomicInteger();
+    public static ThreadPoolExecutor executors = new ThreadPoolExecutor(3, 5, 10, TimeUnit.SECONDS,
+            new ArrayBlockingQueue<>(3), new ThreadFactory() {
         @Override
         public Thread newThread(Runnable r) {
             Thread t = new Thread(r);
-            t.setName("Thread"+threadIndex.getAndIncrement());
+            t.setName("Thread" + threadIndex.getAndIncrement());
             return t;
         }
-    },new ThreadPoolExecutor.CallerRunsPolicy());
+    }, new ThreadPoolExecutor.AbortPolicy());
 
-    public static void main(String args[]){
-        for(int i=0;i<10;i++){
-            RunClass  thread = new RunClass();
+    public static void main(String args[]) {
+        for (int i = 0; i < 10; i++) {
+            RunClass thread = new RunClass();
             executors.execute(thread);
         }
     }
 
-    static class RunClass implements Runnable{
+    static class RunClass implements Runnable {
         @Override
         public void run() {
 
-               // Thread.sleep(2000);
-                synchronized (object){
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+               /* synchronized (object){
                     i++;
-                }
-                System.out.println("thread name is "+Thread.currentThread().getName()+"&&"+i);
+                }*/
+            System.out.println("thread name is " + Thread.currentThread().getName() + "&&" + i);
 
         }
     }
