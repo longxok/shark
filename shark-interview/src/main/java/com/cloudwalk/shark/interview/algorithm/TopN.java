@@ -86,7 +86,7 @@ public class TopN {
 
     public static void main(String args[]){
         TopN top = new TopN();
-        int[] intArray = new int[]{12,3,1,3,123,12,343123,124234,1235567,12355,88,99};
+        int[] intArray = new int[]{12,3,1};
         top.findTopN(2,intArray);
         top.print(intArray);
     }

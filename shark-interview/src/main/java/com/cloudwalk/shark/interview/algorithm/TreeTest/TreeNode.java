@@ -50,4 +50,14 @@ public class TreeNode {
     public void setRight(TreeNode right) {
         this.right = right;
     }
+
+    public static void crateTree(TreeNode treeNode,String[] value){
+        if(value.length==0) {
+            return;
+        }
+        else{
+
+        }
+
+    }
 }

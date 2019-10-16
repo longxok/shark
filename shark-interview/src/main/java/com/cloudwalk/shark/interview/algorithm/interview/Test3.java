@@ -8,11 +8,12 @@ package com.cloudwalk.shark.interview.algorithm.interview;
  */
 
 /**
- *
+ * input:hwwhhhuuuwello
+ * output:h1w2h3u3w1e1l2o1
  */
 public class Test3 {
     public static void main(String args[]){
-        System.out.println(getCharCount("hwwwello"));
+        System.out.println(getCharCount("hwwhhhuuuwello"));
     }
 
     public static String getCharCount(String str){

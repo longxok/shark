@@ -5,10 +5,10 @@ import com.cloudwalk.shark.interview.classload.Car;
 public class TestClassLoad {
     public static void main(String[] args){
         try {
-            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+          /*  ClassLoader loader = Thread.currentThread().getContextClassLoader();
             System.out.println(loader);
             Class<?> carClass1 = Thread.currentThread().getContextClassLoader().loadClass("com.cloudwalk.shark.interview.classload.Car");
-            Car car2 =(Car) carClass1.newInstance();
+            Car car2 =(Car) carClass1.newInstance();*/
 
 
             Class<?> carClass = Class.forName("com.cloudwalk.shark.interview.classload.Car");

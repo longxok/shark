@@ -61,4 +61,22 @@ public class SelectionSort {
             System.out.println("");
         }
     }
+
+
+    /*public static int[] quickSort(int [] array){
+        if(array ==null||array.length==0) {
+            return null;
+        }
+        int len = array.length;
+
+        for(int i=0;i<len-1;i++){
+            int m = array[i];
+            for(int j=0;j<len-1;j++){
+                if(array[i]<array[j]){
+                    m =
+                }
+            }
+        }
+
+    }*/
 }
