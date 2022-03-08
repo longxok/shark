@@ -26,7 +26,7 @@
         </plugins>
     </build>
     <properties>
-        <poi.version>4.0.1</poi.version>
+        <poi.version>5.2.1</poi.version>
     </properties>
     <dependencies>
         <!-- word 解析 依赖-->
